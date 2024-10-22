@@ -2,7 +2,7 @@
 
 # KiCAD test repository
 
-The `demo` project is based on a pcb with an elektret signal transistor (`BC547`) amplifier and a transistor stage for level signalization.
+The `demo` project is based on a pcb with two transistors (`BC547`).
 
 | Experience | Level |
 |:------------|:-----:|
