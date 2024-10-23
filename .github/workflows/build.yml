@@ -18,7 +18,7 @@ jobs:
       OutputFolder: "./output"
       ConfigFilePath: ".kibot/build.kibot.yaml"
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad8_auto_full:dev
+    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
     steps:
     - name: Fetch repository
       uses: actions/checkout@v4
