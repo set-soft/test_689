@@ -18,6 +18,7 @@ jobs:
       OutputFolder: "./output"
       ConfigFilePath: ".kibot/build.kibot.yaml"
     runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad8_auto_full:dev
     steps:
     - name: Fetch repository
       uses: actions/checkout@v4
@@ -29,12 +30,8 @@ jobs:
         cp ./LICENSE ${{ env.OutputFolder }}
 
     - name: Run KiBOT
-      uses: INTI-CMNB/KiBot@v2_dk7
-      with:
-        config: ${{ env.ConfigFilePath }}
-        dir: ${{ env.OutputFolder }}
-        schema: "${{ env.Folder }}/${{ env.BaseFileName }}.${{ env.SchematicFileExtension }}"
-        board: "${{ env.Folder }}/${{ env.BaseFileName }}.${{ env.PCBFileExtension }}"
+      run: |
+        kibot -c ${{ env.ConfigFilePath }} -d ${{ env.OutputFolder }} -b "${{ env.Folder }}/${{ env.BaseFileName }}.${{ env.PCBFileExtension }}" -s all -L ${{ env.OutputFolder }}/log board_top_filled
 
     - name: Archive artifacts
       uses: actions/upload-artifact@v4
